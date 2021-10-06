@@ -17,7 +17,7 @@ KarinaRouter.get('/latamDev', async (request, response) => {
         });
 
         return response.json(r);
-    } catch (e: any) {
+    } catch (e) {
         return response.json(e)
     } finally {
         return response.json();
@@ -38,7 +38,7 @@ KarinaRouter.get('/latamPrd', async (request, response) => {
         });
 
         return response.json(r);
-    } catch (e: any) {
+    } catch (e) {
         return response.json(e)
     } finally {
         return response.json();
@@ -60,7 +60,7 @@ KarinaRouter.get('brDev', async (request, response) => {
         });
 
         return response.json(r);
-    } catch (e: any) {
+    } catch (e) {
         return response.json(e)
     } finally {
         return response.json();
@@ -82,7 +82,7 @@ KarinaRouter.get('/brPrd', async (request, response) => {
         });
 
         return response.json(r);
-    } catch (e: any) {
+    } catch (e) {
         return response.json(e)
     } finally {
         return response.json();
@@ -104,7 +104,7 @@ KarinaRouter.get('/avonHispDev', async (request, response) => {
         });
 
         return response.json(r);
-    } catch (e: any) {
+    } catch (e) {
         return response.json(e)
     } finally {
         return response.json();
@@ -126,7 +126,7 @@ KarinaRouter.get('/latamPrd', async (request, response) => {
         });
 
         return response.json(r);
-    } catch (e: any) {
+    } catch (e) {
         return response.json(e)
     } finally {
         return response.json();
