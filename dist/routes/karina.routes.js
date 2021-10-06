@@ -94,11 +94,11 @@ KarinaRouter.get('/avonHispDev', async (request, response) => {
     return response.json();
   }
 });
-KarinaRouter.get('/latamPrd', async (request, response) => {
+KarinaRouter.get('/avonHispPrd', async (request, response) => {
   try {
     const r = await (0, _axios.default)({
       method: "DELETE",
-      url: 'https://api.chatlayer.ai/v1/bots/3859/conversations/wvywhtspp_5511974223520_5519996861081/session-data?version=LIVE',
+      url: 'https://api.chatlayer.ai/v1/bots/3242/conversations/wvywhtspp_5511974223520_5519996861081/session-data?version=LIVE',
       headers: {
         'Authorization': process.env.KEYAVON || ''
       }
