@@ -52,7 +52,7 @@ KarinaRouter.get('brDev', async (request, response) => {
     try {
         const r = await axios({
             method: "DELETE",
-            url: 'https://api.chatlayer.ai/v1/bots/3052/conversations/wvywhtspp_5511930370000_5519996861081/session-data?version=LIVE',
+            url: 'https://api.chatlayer.ai/v1/bots/3052/conversations/wvywhtspp_5511930370000_5519996861081/session-data?version=DRAFT',
             headers: {
                 'Authorization': process.env.KEYDEV || '',
                 
@@ -96,7 +96,7 @@ KarinaRouter.get('/avonHispDev', async (request, response) => {
     try {
         const r = await axios({
             method: "DELETE",
-            url: 'https://api.chatlayer.ai/v1/bots/3242/conversations/wvywhtspp_5511933528111_5519996861081/session-data?version=LIVE',
+            url: 'https://api.chatlayer.ai/v1/bots/3242/conversations/wvywhtspp_5511933528111_5519996861081/session-data?version=DRAFT',
             headers: {
                 'Authorization': process.env.KEYAVON || '',
                 
@@ -113,12 +113,12 @@ KarinaRouter.get('/avonHispDev', async (request, response) => {
 });
 
 
-KarinaRouter.get('/latamPrd', async (request, response) => {
+KarinaRouter.get('/avonHispPrd', async (request, response) => {
 
     try {
         const r = await axios({
             method: "DELETE",
-            url: 'https://api.chatlayer.ai/v1/bots/3859/conversations/wvywhtspp_5511974223520_5519996861081/session-data?version=LIVE',
+            url: 'https://api.chatlayer.ai/v1/bots/3242/conversations/wvywhtspp_5511974223520_5519996861081/session-data?version=LIVE',
             headers: {
                 'Authorization': process.env.KEYAVON || '',
                 
