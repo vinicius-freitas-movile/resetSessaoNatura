@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
-    "production": "node ./dist/index.js",
-    "build": "babel ./src/ --extensions \".ts\" --out-dir dist"
+    "production": "node ./dist/index.js"
   },
   "author": "",
   "license": "ISC",
