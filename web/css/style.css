@@ -1,0 +1,15 @@
+.formulario {
+    margin: 0 auto;
+    width: 50%;
+    margin-top: 10%;
+}
+
+.btn-send {
+    width: 100%;
+}
+
+.resposta{
+    color: red;
+    text-align: center;
+    width: 100%;
+}
