@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import KarinaRouter from './karina.routes';
+import resetRouter from './reset.routes';
 
 const routes = Router();
 
-routes.use('/', KarinaRouter);
+routes.use('/', resetRouter);
 
 export default routes;
