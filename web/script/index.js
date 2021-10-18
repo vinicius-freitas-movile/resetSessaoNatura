@@ -19,15 +19,15 @@ btnSend.addEventListener("click", async function (e) {
 
 async function sendData(stage, bot, userNumber) {
    
-    axios.post('http://localhost:3333/reset', {
+    axios.post('https://naturasessao.herokuapp.com/reset', {
         stage,
         bot,
         userNumber
     }).then(res => {
-        tagResponseNo.setAttribute('hidden')
+        tagResponseNo.setAttribute('hidden', 'hidden')
         tagResponseOk.removeAttribute('hidden');
     }).catch(e => {
-        tagResponseOk.setAttribute('hidden')
+        tagResponseOk.setAttribute('hidden', 'hidden')
         tagResponseNo.removeAttribute('hidden');
     });
 
