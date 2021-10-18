@@ -1,5 +1,6 @@
 const btnSend = document.querySelector('.btn-send');
-const text = document.getElementsByClassName('text-response')[0]
+const tagResponseOk = document.getElementsByClassName('text-response')[0]
+const tagResponseNo = document.getElementsByClassName('text-Nresponse')[0]
 
 
 btnSend.addEventListener("click", async function (e) {
@@ -23,7 +24,11 @@ async function sendData(stage, bot, userNumber) {
         bot,
         userNumber
     }).then(res => {
-        console.log(res)
+        tagResponseNo.setAttribute('hidden')
+        tagResponseOk.removeAttribute('hidden');
+    }).catch(e => {
+        tagResponseOk.setAttribute('hidden')
+        tagResponseNo.removeAttribute('hidden');
     });
 
 }
