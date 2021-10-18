@@ -24,10 +24,10 @@ async function sendData(stage, bot, userNumber) {
         bot,
         userNumber
     }).then(res => {
-        tagResponseNo.setAttribute('hidden')
+        tagResponseNo.setAttribute('hidden', 'hidden')
         tagResponseOk.removeAttribute('hidden');
     }).catch(e => {
-        tagResponseOk.setAttribute('hidden')
+        tagResponseOk.setAttribute('hidden', 'hidden')
         tagResponseNo.removeAttribute('hidden');
     });
 
