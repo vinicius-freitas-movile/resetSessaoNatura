@@ -50,8 +50,6 @@ class ResetController {
         break;
     }
 
-    console.log(url, conversationId);
-
     try {
       const response = await (0, _axios.default)({
         method: "DELETE",
