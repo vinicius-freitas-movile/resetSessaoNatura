@@ -1,33 +1,33 @@
 @import url('http://fonts.cdnfonts.com/css/gilroy-bold');
-
-body{
+body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.container{
+.container {
   background-color: #FFFFFF !important;
   padding: 2% !important;
 }
 
-.top-bar{
+.top-bar {
   background-color: #007171;
   width: 100vw;
-  height: 7vh;
+  height: 6vh;
 }
 
-.logo{
-  height: 45%;
-  width: 12%;
+.logo {
+  height: 100%;
+  align-items: center;
+  display: flex;
 }
 
-#logoImg{
+#logoImg {
   width: 118px;
   height: 24px;
-  margin: 5% 0 0 30%;
+  margin-left: 3%;
 }
 
-.bodyApp{
-  flex:1;
+.bodyApp {
+  flex: 1;
   display: flex;
   flex-direction: row;
   background-color: #FAFAFA;
@@ -35,71 +35,63 @@ body{
   height: 95vh;
 }
 
-.sideBar{
+.sideBar {
   flex: 1;
   flex-direction: column;
-  background-color: #FFFFFF ;
+  background-color: #FFFFFF;
   width: 30vw;
   height: 95vh;
 }
 
-.menu-sidebar{
+.menu-sidebar {
   margin-top: 1%;
 }
 
-.menuHome img{
+.menuHome img {
   margin: 4% 0 0 12%;
 }
 
-.bodyReset{
+.bodyReset {
   flex: 3;
   flex-direction: row;
   width: 100vw;
   margin: 2% 0 0 2%
 }
 
-.headerBodyReset h1{
+.headerBodyReset h1 {
   font-family: 'Gilroy-Medium';
   font-size: 48px;
 }
 
-.infoReset{
+.infoReset {
   background-color: #FFFFFF;
   width: 45vw;
-  height: 50vh;
 }
-.container{
+
+.container {
   padding: 1% 0 0 4%;
 }
 
-.PBold{
+.PBold {
   font-family: 'Gilroy-Bold';
   font-size: 20px;
 }
 
-.radioGroup{
-  padding: 1% 0% 2% 0% ;
+.radioGroup {
+  padding: 1% 0% 2% 0%;
 }
 
-.radioGroupBot{
+.radioGroupBot {
   flex-direction: column;
 }
 
-#radioHomol{
-  padding-right: 6%;
-}
-
-.groupBot{
+.groupBot {
   flex-direction: column;
   display: flex;
 }
 
-.radioBot{
-  padding: 0 0 2% 0;
-}
-
 .radioBot span {
-  width: 10%;
+  width: 5%;
   margin: 0px;
 }
 
@@ -108,12 +100,12 @@ body{
   background-color: unset !important;
 }
 
-.userNumber{
+.userNumber {
   width: 14vw;
   height: 4vh;
 }
 
-.tooltipButton{
+.tooltipButton {
   border: none;
   background: none;
   margin-top: -1% !important
@@ -125,28 +117,27 @@ body{
   height: 16px;
 }
 
-.tooltipText{
+.tooltipText {
   background-color: #FFBE3B;
   font-family: "Gilroy-Bold" !important;
   font-size: 14px;
   box-shadow: 0 3px 10px 0px rgb(0 0 0 / 0.2)
 }
 
-.tooltip-arrow{
+.tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -10px;
   border-width: 0 5px 5px;
 }
 
-.bs-tooltip-end .tooltip-arrow::before{
+.bs-tooltip-end .tooltip-arrow::before {
   border-right-color: #FFBE3B !important;
   color: #FFBE3B !important;
   right: -4px !important;
-
 }
 
-.tooltip-inner{
+.tooltip-inner {
   color: black !important;
   background-color: unset !important;
   max-width: none !important;
@@ -163,9 +154,32 @@ body{
   padding: 1% 2% 1% 2%;
 }
 
-.footerButton{
+.footerButton {
   text-align: end;
   margin-top: -3%;
   font-family: 'Gilroy-Medium';
   font-size: 14px;
+}
+
+input[type='radio'] {
+  background-color: white !important;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007171 !important;
+  border-radius: 50%;
+  outline: none;
+}
+
+input[type='radio']:before {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 60%;
+  margin: 20% auto;
+  border-radius: 50%;
+}
+
+input[type='radio']:checked:before {
+  background: #007171 !important;
 }
