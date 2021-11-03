@@ -74,18 +74,19 @@ function App() {
                   <p className="PBold">Ambiente</p>
                 </div>
                 <InputGroup className="mb-3 radioGroup">
-                  <InputGroup.Radio aria-label="DRAFT" name="radioStage" id="radioHomol dev" value="DRAFT" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'DRAFT'} />
+                  <InputGroup.Radio aria-label="DRAFT" name="radioStage" className="radioStage" id="radioHomol dev" value="DRAFT" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'DRAFT'} label="teste"/>
                   <InputGroup.Text id="radioHomol">Homologação</InputGroup.Text>
-                  <InputGroup.Radio aria-label="LIVE" name="radioStage" id="radioHomol" value="LIVE" id="live" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'LIVE'} />
-                  <InputGroup.Text>Produção</InputGroup.Text>
+                  <InputGroup.Radio aria-label="LIVE" name="radioStage" className="radioStage" id="radioHomol dev" value="LIVE" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'LIVE'} />
+                  <InputGroup.Text id="radioHomol">Produção</InputGroup.Text>
                 </InputGroup>
                 <p className="PBold">Bot</p>
                 <InputGroup className="mb-3 radioGroup">
-                  <InputGroup.Radio aria-label="Avon Hisp" name="radioBot" value='3242' onChange={(e) => { setBot(e.target.value) }} checked={bot === '3242'} />
+                  <input type="radio" aria-label="Avon Hisp"  name="radioBot" value='3242' id=" radioHomoldev" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3242'} />
+                  <InputGroup.Radio aria-label="Avon Hisp"  name="radioBot" value='3242' id=" radioHomoldev" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3242'} />
                   <InputGroup.Text id="radioHomol">Avon Hispânica</InputGroup.Text>
-                  <InputGroup.Radio aria-label="Nat BR" name="radioBot" value='3052' onChange={(e) => { setBot(e.target.value) }} checked={bot === '3052'} />
+                  <InputGroup.Radio aria-label="Nat BR" name="radioBot" value='3052' id=" radioHomol dev" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3052'} />
                   <InputGroup.Text>Natura Brasil</InputGroup.Text>
-                  <InputGroup.Radio aria-label="Nat Latam" name="radioBot" value='3859' onChange={(e) => { setBot(e.target.value) }} checked={bot === '3859'} />
+                  <InputGroup.Radio aria-label="Nat Latam" name="radioBot" value='3859' id="dev" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3859'} />
                   <InputGroup.Text>Natura Hispânica</InputGroup.Text>
                 </InputGroup>
                 <p className="PBold">Número</p>
