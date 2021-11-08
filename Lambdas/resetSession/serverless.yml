@@ -14,3 +14,22 @@ custom:
 functions:
   resetSession:
     handler: handler.index
+    memorySize: 128
+    timeout: 900
+    vpc:
+      securityGroupIds:
+        - 
+      subnetIds:
+        - 
+        - 
+    package:
+      exclude:
+        - '**/**'
+      include:
+        - ./**
+    description: Job verify and update v3Token and refresh_token.
+    events:
+      - http:
+          path: /resetSession
+          method: POST
+          private: true

@@ -83,9 +83,22 @@ const verifyExistPlusInUserNumber = (userNumber: string) => {
 }
 
 export const handler = async (event: any, context: any) => {
+    if (event.httpMethod !== 'POST') {
+        return { statusCode: 405, body: 'Method Not Allowed' };
+    }
+
+    if (!event.body) {
+        return { statusCode: 400, body: 'Bad Request' };
+    }
+
+    if (event.body.find((body: any) => body.bot === undefined || body.userNumber === undefined || body.stage === undefined)) {
+        return { statusCode: 400, body: 'Bad Request' };
+    }
 
     try {
-        deleteSession(JSON.parse(event.body));
+        const response = await deleteSession(JSON.parse(event.body));
+
+        return { statusCode: 200, body: response };
 
     } catch (e: any) {
         return {
