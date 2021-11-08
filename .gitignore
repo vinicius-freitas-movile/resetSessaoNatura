@@ -1,4 +1,4 @@
-API/node_modules/
-API/dist
-API/.env
-web/node_modules/
+Lambda/node_modules/
+Lambda/dist
+reset-session-web/node_modules/
+reset-session-web/build
