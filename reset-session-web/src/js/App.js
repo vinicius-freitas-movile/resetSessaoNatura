@@ -3,8 +3,6 @@ import LogoSinch from '../img/LogoSinch.png';
 import IconHome from '../img/iconHome.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import { InputGroup, Tooltip, OverlayTrigger, Button } from 'react-bootstrap'
-import { FaQuestionCircle } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import { useState } from 'react';
@@ -38,17 +36,6 @@ function App() {
     });
   }
 
-  const renderTooltip = () => (
-    <Tooltip id="button-tooltip" className="tooltipText">
-      <p>
-        Formato aceito:<br />
-        DDI + DDD + Numero<br />
-        Ex: 5561991234567<br />
-        Não utilizar traços ou espaços
-      </p>
-    </Tooltip>
-  );
-
   return (
     <div className="app">
 
@@ -73,22 +60,35 @@ function App() {
                 <div className="headerInfoReset">
                   <p className="PBold">Ambiente</p>
                 </div>
-                <InputGroup className="mb-3 radioGroup">
-                  <InputGroup.Radio aria-label="DRAFT" name="radioStage" className="radioStage" id="radioHomol dev" value="DRAFT" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'DRAFT'} label="teste"/>
-                  <InputGroup.Text id="radioHomol">Homologação</InputGroup.Text>
-                  <InputGroup.Radio aria-label="LIVE" name="radioStage" className="radioStage" id="radioHomol dev" value="LIVE" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'LIVE'} />
-                  <InputGroup.Text id="radioHomol">Produção</InputGroup.Text>
-                </InputGroup>
+                <div className="mb-3 radioGroup">
+                  <div className="row">
+                    <div className="col-3">
+                      <input type="radio" aria-label="DRAFT" name="radioStage" className="radioStage" value="DRAFT" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'DRAFT'} />
+                      <span id="spanRadio">Homologação</span>
+                    </div>
+                    <div className="col-3">
+                      <input type="radio" aria-label="LIVE" name="radioStage" className="radioStageL" value="LIVE" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'LIVE'} />
+                      <span id="spanRadio">Produção</span>
+                    </div>
+                  </div>
+                </div>
                 <p className="PBold">Bot</p>
-                <InputGroup className="mb-3 radioGroup">
-                  <input type="radio" aria-label="Avon Hisp"  name="radioBot" value='3242' id=" radioHomoldev" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3242'} />
-                  <InputGroup.Radio aria-label="Avon Hisp"  name="radioBot" value='3242' id=" radioHomoldev" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3242'} />
-                  <InputGroup.Text id="radioHomol">Avon Hispânica</InputGroup.Text>
-                  <InputGroup.Radio aria-label="Nat BR" name="radioBot" value='3052' id=" radioHomol dev" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3052'} />
-                  <InputGroup.Text>Natura Brasil</InputGroup.Text>
-                  <InputGroup.Radio aria-label="Nat Latam" name="radioBot" value='3859' id="dev" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3859'} />
-                  <InputGroup.Text>Natura Hispânica</InputGroup.Text>
-                </InputGroup>
+                <div className="mb-3 radioGroup">
+                  <div className="row">
+                    <div className="col-3">
+                      <input aria-label="Avon Hisp" name="radioBot" type="radio" className="radioBot" value="3242" onChange={(e) => { setBot(e.target.value) }} checked={bot === '3242'} />
+                      <span id="spanRadio">Avon Hispânica</span>
+                    </div>
+                    <div className="col-3">
+                      <input aria-label="Nat BR" name="radioBot" type="radio" className="radioBotB" value='3052' onChange={(e) => { setBot(e.target.value) }} checked={bot === '3052'} />
+                      <span id="spanRadio">Natura Brasil</span>
+                    </div>
+                    <div className="col-3">
+                      <input aria-label="Nat Latam" name="radioBot" type="radio" className="radioBot" value='3859' onChange={(e) => { setBot(e.target.value) }} checked={bot === '3859'} />
+                      <span id="spanRadio">Natura Hispânica</span>
+                    </div>
+                  </div>
+                </div>
                 <p className="PBold">Número</p>
                 <div className="footerReset">
                   <input type="text" required="required" placeholder="5511988589971" className="userNumber" onChange={(e) => { setUserNumber(e.target.value) }}></input>
