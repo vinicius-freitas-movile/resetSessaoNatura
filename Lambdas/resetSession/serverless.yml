@@ -1,0 +1,16 @@
+service: resetSession
+frameworkVersion: '2'
+
+custom:
+  development:
+    resetSession: --
+  region: us-east-1
+
+  provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+
+functions:
+  resetSession:
+    handler: handler.index

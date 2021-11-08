@@ -1,4 +1,4 @@
-Lambda/node_modules/
-Lambda/dist
+Lambdas/resetSession/node_modules/
+Lambdas/resetSession/dist
 reset-session-web/node_modules/
 reset-session-web/build
