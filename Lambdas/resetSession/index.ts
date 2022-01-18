@@ -53,13 +53,14 @@ const deleteSession = async ({ bot, userNumber, stage }: RecivedRequest): Promis
             break;
     }
 
+    console.log('url : ', url)
+    console.log('token: ', token)
     try {
         const response = await axios({
             method: "DELETE",
             url,
             headers: {
                 'Authorization': token,
-
             }
         });
 
@@ -83,20 +84,24 @@ const verifyExistPlusInUserNumber = (userNumber: string) => {
 }
 
 export const handler = async (event: any, context: any) => {
+
+    const body = JSON.parse(event.body);
+
+    console.log(`body: ${body}, event: ${event}`)
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
-    if (!event.body) {
-        return { statusCode: 400, body: 'Bad Request' };
+    if (!body) {
+        return { statusCode: 400, body: 'Bad Request not have a body' };
     }
 
-    if (event.body.find((body: any) => body.bot === undefined || body.userNumber === undefined || body.stage === undefined)) {
-        return { statusCode: 400, body: 'Bad Request' };
+    if (body.bot == undefined || body.userNumber == undefined || body.stage == undefined) {
+        return { statusCode: 400, body: `Bad Request your body: ${JSON.stringify(event.body)}` };
     }
 
     try {
-        const response = await deleteSession(JSON.parse(event.body));
+        const response = await deleteSession(body);
 
         return { statusCode: 200, body: response };
 

@@ -3,15 +3,15 @@ frameworkVersion: '2'
 
 provider:
   name: aws
-  runtime: nodejs15.x
+  runtime: nodejs14.x
   lambdaHashingVersion: 20201221
   region: 'us-east-2'
 
 functions:
   resetSession:
-    handler: index.handler
+    handler: dist/index.handler
     memorySize: 128
-    timeout: 180
+    timeout: 30
     vpc:
       securityGroupIds:
         - sg-03f5b485d7cb35d38
@@ -22,10 +22,10 @@ functions:
       exclude:
         - '**/**'
       include:
-        - ./**
+        - ./dist/**
     description: Reset session
     events:
       - http:
-          path: /resetSession
+          path: /
           method: POST
           private: true
