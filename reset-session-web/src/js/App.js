@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import '../css/App.css';
 import LogoSinch from '../img/LogoSinch.png';
 import IconHome from '../img/iconHome.png';
@@ -8,6 +9,8 @@ import axios from 'axios';
 import { useState } from 'react';
 
 function App() {
+  console.log(process.env)
+
   //ta quebrando essa bgaça ver o pq não está alterando o estado do check
   const [stage, setStage] = useState('DRAFT');
   const [bot, setBot] = useState('3052');
@@ -29,11 +32,17 @@ function App() {
   }
 
   const deleteSession = async () => {
-    await axios.post('https://naturasessao.herokuapp.com/reset', {
+    await axios.post("https://9layjb0hi6.execute-api.us-east-2.amazonaws.com/development/resetSession-development-resetSession", {
       stage,
       bot: Number(bot),
       userNumber
+    },
+    {
+      headers: {
+        'x-api-key': 'CAxdi7jzQa4oMvBqslJVx4O5H4JYfgWa6bUXnkvk'
+      }
     });
+
   }
 
   return (

@@ -25,7 +25,7 @@ functions:
       exclude:
         - '**/**.**'
       include:
-        - dist/**
+        - .build/**
     description: Reset session
     events:
       - http:
