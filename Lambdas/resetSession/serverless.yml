@@ -1,6 +1,9 @@
 service: resetSession
 frameworkVersion: '2'
 
+plugins:
+  - serverless-plugin-typescript
+
 provider:
   name: aws
   runtime: nodejs14.x
@@ -9,7 +12,7 @@ provider:
 
 functions:
   resetSession:
-    handler: dist/index.handler
+    handler: index.handler
     memorySize: 128
     timeout: 30
     vpc:
@@ -20,12 +23,11 @@ functions:
         - subnet-001de5ecd3df6ae3d
     package:
       exclude:
-        - '**/**'
+        - '**/**.**'
       include:
-        - ./dist/**
+        - dist/**
     description: Reset session
     events:
       - http:
           path: /
           method: POST
-          private: true

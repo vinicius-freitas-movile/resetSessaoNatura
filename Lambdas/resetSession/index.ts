@@ -87,7 +87,8 @@ export const handler = async (event: any, context: any) => {
 
     const body = JSON.parse(event.body);
 
-    console.log(`body: ${body}, event: ${event}`)
+    console.log(`body: ${JSON.stringify(body)}, event: ${JSON.stringify(event)}`)
+    
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
