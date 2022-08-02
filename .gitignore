@@ -1,5 +1,6 @@
 Lambdas/resetSession/node_modules/
 Lambdas/resetSession/dist
 Lambdas/resetSession/.serverless
+Lambdas/resetSession/.build
 reset-session-web/node_modules/
 reset-session-web/build

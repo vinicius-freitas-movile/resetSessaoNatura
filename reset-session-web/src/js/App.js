@@ -9,8 +9,6 @@ import axios from 'axios';
 import { useState } from 'react';
 
 function App() {
-  console.log(process.env)
-
   //ta quebrando essa bgaça ver o pq não está alterando o estado do check
   const [stage, setStage] = useState('DRAFT');
   const [bot, setBot] = useState('3052');
@@ -20,29 +18,44 @@ function App() {
     event.preventDefault();
     if (!isNaN(Number(userNumber))) {
       deleteSession();
-
-      showToast();
     }
   }
 
-  const showToast = () => {
-    toast.success("Sessão resetada com sucesso!", {
-      position: toast.POSITION.BOTTOM_RIGHT
-    });
+  const showToast = (isSuccess) => {
+
+    if (isSuccess) {
+      toast.success("Sessão resetada com sucesso!", {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    } else {
+      toast.error("Eror ao resetar a Sessão!", {
+        position: toast.POSITION.BOTTOM_RIGHT
+      });
+    }
+
   }
 
   const deleteSession = async () => {
-    await axios.post("https://9layjb0hi6.execute-api.us-east-2.amazonaws.com/development/resetSession-development-resetSession", {
-      stage,
-      bot: Number(bot),
-      userNumber
-    },
-    {
-      headers: {
-        'x-api-key': 'CAxdi7jzQa4oMvBqslJVx4O5H4JYfgWa6bUXnkvk'
-      }
-    });
+    const url = "http://0.0.0.0:3000/dev";
+    //const url = "https://9layjb0hi6.execute-api.us-east-2.amazonaws.com/development/resetSession-development-resetSession";
+    try {
+      await axios.post(url, {
+        stage,
+        bot: Number(bot),
+        userNumber
+      },
+        {
+          headers: {
+            'x-api-key': 'CAxdi7jzQa4oMvBqslJVx4O5H4JYfgWa6bUXnkvk'
+          }
+        });
 
+      showToast(true);
+
+    } catch (e) {
+      console.log('error', e);
+      showToast(false);
+    }
   }
 
   return (
@@ -76,7 +89,7 @@ function App() {
                       <span id="spanRadio">Homologação</span>
                     </div>
                     <div className="col-3">
-                      <input type="radio" aria-label="LIVE" name="radioStage" className="radioStageL" value="LIVE" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'LIVE'} />
+                      <input disabled type="radio" aria-label="LIVE" name="radioStage" className="radioStageL" value="LIVE" onChange={(e) => { setStage(e.target.value) }} checked={stage === 'LIVE'} />
                       <span id="spanRadio">Produção</span>
                     </div>
                   </div>
@@ -102,7 +115,7 @@ function App() {
                 <div className="footerReset">
                   <input type="text" required="required" placeholder="5511988589971" className="userNumber" onChange={(e) => { setUserNumber(e.target.value) }}></input>
                   <div className="footerButton">
-                    <button className="buttonReset" className="btn btn-success" type="submit">Resetar</button>
+                    <button className="btn btn-success" type="submit">Resetar</button>
                     <ToastContainer />
                   </div>
                 </div>

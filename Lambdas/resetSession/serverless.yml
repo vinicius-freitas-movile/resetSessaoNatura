@@ -3,12 +3,19 @@ frameworkVersion: '2'
 
 plugins:
   - serverless-plugin-typescript
+  - serverless-offline
 
 provider:
   name: aws
   runtime: nodejs14.x
   lambdaHashingVersion: 20201221
   region: 'us-east-2'
+  environment:
+    STAGE: ${opt:stage, 'dev'}
+
+custom:
+  dev:
+    origin: http://localhost:3001
 
 functions:
   resetSession:
@@ -31,3 +38,5 @@ functions:
       - http:
           path: /
           method: POST
+          cors:
+            origin: ${self:custom.${self:provider.stage}.origin}

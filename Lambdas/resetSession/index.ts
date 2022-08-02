@@ -15,39 +15,25 @@ const deleteSession = async ({ bot, userNumber, stage }: RecivedRequest): Promis
     switch (bot) {
         case 3052:
             numberBot = stage.toUpperCase() === 'DRAFT' ? phoneNumbers['NatBrDev'] : phoneNumbers['NatBrPrd'];
-
             token = stage.toUpperCase() === 'DRAFT' ? process.env.KEYDEV : process.env.KEYPRD
-
             conversationId = verifyExistPlusInUserNumber(userNumber);
-
             conversationId = numberBot.concat(conversationId);
-
             url = `https://api.staging.chatlayer.ai/v1/bots/${bot}/conversations/${conversationId}/session-data?version=${stage}`;
 
             break;
-
         case 3859:
             numberBot = stage.toUpperCase() === 'DRAFT' ? phoneNumbers['NatLatamDev'] : phoneNumbers['NatLatamPrd'];
-
             token = stage.toUpperCase() === 'DRAFT' ? process.env.KEYDEV : process.env.KEYPRD
-
             conversationId = verifyExistPlusInUserNumber(userNumber);
-
             conversationId = numberBot.concat(conversationId);
-
             url = `https://api.staging.chatlayer.ai/v1/bots/${bot}/conversations/${conversationId}/session-data?version=${stage}`;
 
             break;
-
         case 3242:
             numberBot = stage.toUpperCase() === 'DRAFT' ? phoneNumbers['AvonHispDev'] : phoneNumbers['AvonHispPrd'];
-
             token = process.env.KEYAVON
-
             conversationId = verifyExistPlusInUserNumber(userNumber);
-
             conversationId = numberBot.concat(conversationId);
-
             url = `https://api.staging.chatlayer.ai/v1/bots/${bot}/conversations/${conversationId}/session-data?version=${stage}`;
 
             break;
