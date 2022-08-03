@@ -36,24 +36,28 @@ function App() {
   }
 
   const deleteSession = async () => {
-    const url = "http://0.0.0.0:3000/dev";
-    //const url = "https://9layjb0hi6.execute-api.us-east-2.amazonaws.com/development/resetSession-development-resetSession";
+    const url = "https://w5gkxfoh18.execute-api.us-east-2.amazonaws.com/development/resetSession";
+
+    const data = {
+      stage,
+      bot: Number(bot),
+      userNumber
+    };
+
+    const header = {
+      'x-api-key': '47uJpJdRyu3wuHSJLamZkyM80FhZKKAalXX28WD2'
+    };
+
     try {
-      await axios.post(url, {
-        stage,
-        bot: Number(bot),
-        userNumber
-      },
+      await axios.post(url, data,
         {
-          headers: {
-            'x-api-key': 'CAxdi7jzQa4oMvBqslJVx4O5H4JYfgWa6bUXnkvk'
-          }
+          header
         });
 
       showToast(true);
 
     } catch (e) {
-      console.log('error', e);
+      console.error('error', JSON.stringify(e));
       showToast(false);
     }
   }

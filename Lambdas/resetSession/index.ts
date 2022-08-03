@@ -37,7 +37,7 @@ const deleteSession = async ({ bot, userNumber, stage }: RecivedRequest): Promis
             url = `https://api.staging.chatlayer.ai/v1/bots/${bot}/conversations/${conversationId}/session-data?version=${stage}`;
 
             break;
-    }
+    } 
 
     console.log('url : ', url)
     console.log('token: ', token)
@@ -69,36 +69,67 @@ const verifyExistPlusInUserNumber = (userNumber: string) => {
     }
 }
 
-export const handler = async (event: any, context: any) => {
-
+export const handler = async (event: any, context: any, callback: any) => {
     const body = JSON.parse(event.body);
 
     console.log(`body: ${JSON.stringify(body)}, event: ${JSON.stringify(event)}`)
     
     if (event.httpMethod !== 'POST') {
-        return { statusCode: 405, body: 'Method Not Allowed' };
+        callback(null, {
+            statusCode: 405,
+            body: 'Method Not Allowed',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+        });
     }
 
     if (!body) {
-        return { statusCode: 400, body: 'Bad Request not have a body' };
+        callback(null, {
+            statusCode: 400,
+            body: 'Bad Request not have a body',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+        });
     }
 
     if (body.bot == undefined || body.userNumber == undefined || body.stage == undefined) {
-        return { statusCode: 400, body: `Bad Request your body: ${JSON.stringify(event.body)}` };
+        callback(null, {
+            statusCode: 400,
+            body: `Bad Request your body: ${JSON.stringify(event.body)}`,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+        });
     }
 
     try {
         const response = await deleteSession(body);
 
-        return { statusCode: 200, body: response };
+        callback(null, {
+            statusCode: 200,
+            body: response,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+        });
 
     } catch (e: any) {
-        return {
+        callback(null, {
             statusCode: 500,
             body: JSON.stringify({
                 message: e.message
-            })
-        }
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+        });
     }
 
 }
