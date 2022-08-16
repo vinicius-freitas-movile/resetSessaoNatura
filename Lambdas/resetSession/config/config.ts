@@ -1,8 +1,23 @@
-export const phoneNumbers = {
-    "NatLatamDev": "wvywhtspp_5511937418840_",
-    "NatLatamPrd": "wvywhtspp_5511930380000_",
-    "NatBrDev": "wvywhtspp_5511930370000_",
-    "NatBrPrd": "wvywhtspp_5511930360000_",
-    "AvonHispDev": "wvywhtspp_5511933528111_",
-    "AvonHispPrd": "wvywhtspp_5511974223520_"
+type envType = {
+    [key: string]: {
+        DRAFT?: string;
+        LIVE?: string;
+    }
+}
+export const environment: envType = {
+    "3052": {
+        "DRAFT": "wvywhtspp_5511930370000_",
+        "LIVE": "wvywhtspp_5511930360000_"
+    },
+    "3859": {
+        "DRAFT": "wvywhtspp_5511937418840_",
+        "LIVE": "wvywhtspp_5511930380000_"
+    },
+    "3242": {
+        "DRAFT": "wvywhtspp_5511933528111_",
+        "LIVE": "wvywhtspp_5511974223520_"
+    },
+    "2936": {
+        "LIVE": "wvywhtspp_551143493770_"
+    }
 }

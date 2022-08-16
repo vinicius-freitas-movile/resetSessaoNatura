@@ -1,46 +1,24 @@
 import axios from 'axios';
-import { phoneNumbers } from './config/config';
+import { environment } from './config/config';
+
 interface RecivedRequest {
-    bot: number,
+    bot: string,
     userNumber: string,
     stage: string;
 }
 
 const deleteSession = async ({ bot, userNumber, stage }: RecivedRequest): Promise<string> => {
-    let url;
-    let token;
-    let numberBot;
     let conversationId;
+    conversationId = verifyExistPlusInUserNumber(userNumber);
 
-    switch (bot) {
-        case 3052:
-            numberBot = stage.toUpperCase() === 'DRAFT' ? phoneNumbers['NatBrDev'] : phoneNumbers['NatBrPrd'];
-            token = process.env.KEYNATBRDEV;
-            conversationId = verifyExistPlusInUserNumber(userNumber);
-            conversationId = numberBot.concat(conversationId);
-            url = `https://api.staging.chatlayer.ai/v1/bots/${bot}/conversations/${conversationId}/session-data?version=${stage}`;
+    const key_token = "KEY" + bot;
+    const numberBot = stage === "LIVE" ? environment[bot]["LIVE"] :  environment[bot]["DRAFT"];
+    const token = process.env[key_token];
+    
+    conversationId = numberBot.concat(conversationId);
 
-            break;
-        case 3859:
-            numberBot = stage.toUpperCase() === 'DRAFT' ? phoneNumbers['NatLatamDev'] : phoneNumbers['NatLatamPrd'];
-            token = process.env.KEYNATHSPDEV;
-            conversationId = verifyExistPlusInUserNumber(userNumber);
-            conversationId = numberBot.concat(conversationId);
-            url = `https://api.staging.chatlayer.ai/v1/bots/${bot}/conversations/${conversationId}/session-data?version=${stage}`;
+    const url = `https://api.staging.chatlayer.ai/v1/bots/${bot}/conversations/${conversationId}/session-data?version=${stage}`;
 
-            break;
-        case 3242:
-            numberBot = stage.toUpperCase() === 'DRAFT' ? phoneNumbers['AvonHispDev'] : phoneNumbers['AvonHispPrd'];
-            token = process.env.KEYAVONDEV;
-            conversationId = verifyExistPlusInUserNumber(userNumber);
-            conversationId = numberBot.concat(conversationId);
-            url = `https://api.staging.chatlayer.ai/v1/bots/${bot}/conversations/${conversationId}/session-data?version=${stage}`;
-
-            break;
-    } 
-
-    console.log('url : ', url)
-    console.log('token: ', token)
     try {
         const response = await axios({
             method: "DELETE",
@@ -73,7 +51,7 @@ export const handler = async (event: any, context: any, callback: any) => {
     const body = JSON.parse(event.body);
 
     console.log(`body: ${JSON.stringify(body)}, event: ${JSON.stringify(event)}`)
-    
+
     if (event.httpMethod !== 'POST') {
         callback(null, {
             statusCode: 405,
