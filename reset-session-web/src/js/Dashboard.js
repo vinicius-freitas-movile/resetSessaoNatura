@@ -39,7 +39,7 @@ function Dashboard() {
         position: toast.POSITION.BOTTOM_RIGHT
       });
     } else {
-      toast.error("Eror ao resetar a Sessão!", {
+      toast.error("Erro ao resetar a Sessão!", {
         position: toast.POSITION.BOTTOM_RIGHT
       });
     }
@@ -48,6 +48,7 @@ function Dashboard() {
 
   const deleteSession = async () => {
     const url = "https://w5gkxfoh18.execute-api.us-east-2.amazonaws.com/development/resetSession";
+    //const url = "http://0.0.0.0:3000/development/resetSession";
 
     const payload = {
       stage,
@@ -59,15 +60,11 @@ function Dashboard() {
       'x-api-key': '47uJpJdRyu3wuHSJLamZkyM80FhZKKAalXX28WD2'
     };
 
-    console.log('payload', payload);
-
     try {
-      /*
-      await axios.post(url, data,
+      await axios.post(url, payload,
         {
           header
         });
-      */
       showToast(true);
 
     } catch (e) {

@@ -13,7 +13,7 @@ const deleteSession = async ({ bot, userNumber, stage }: RecivedRequest): Promis
 
     const key_token = "KEY" + bot;
     const numberBot = stage === "LIVE" ? environment[bot]["LIVE"] :  environment[bot]["DRAFT"];
-    const token = process.env[key_token];
+    const token = process.env[key_token] || "";
     
     conversationId = numberBot.concat(conversationId);
 
@@ -29,9 +29,9 @@ const deleteSession = async ({ bot, userNumber, stage }: RecivedRequest): Promis
         });
 
         if (response.status == 204) {
-            return `Sessão do numero ${userNumber} resetada com sucesso`;
+            return `Sessao do numero ${userNumber} resetada com sucesso`;
         } else {
-            return 'Sessão inexistente ou com falha na requisição'
+            return 'Sessao inexistente ou com falha na requisição'
         }
     } catch (e: any) {
         return e.message;
@@ -50,7 +50,7 @@ const verifyExistPlusInUserNumber = (userNumber: string) => {
 export const handler = async (event: any, context: any, callback: any) => {
     const body = JSON.parse(event.body);
 
-    console.log(`body: ${JSON.stringify(body)}, event: ${JSON.stringify(event)}`)
+    console.log(`body: ${JSON.stringify(body)} - event: ${JSON.stringify(event)}`)
 
     if (event.httpMethod !== 'POST') {
         callback(null, {
@@ -109,5 +109,4 @@ export const handler = async (event: any, context: any, callback: any) => {
             },
         });
     }
-
 }
