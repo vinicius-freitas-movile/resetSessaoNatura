@@ -195,6 +195,16 @@ body {
   outline: none;
 }
 
+.radioStageL:disabled {
+  background-color: white;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid grey;
+  border-radius: 50%;
+  outline: none;
+}
+
 .radioStageL:before {
   content: '';
   display: block;

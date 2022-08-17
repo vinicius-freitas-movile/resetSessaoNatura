@@ -1,4 +1,5 @@
-API/node_modules/
-API/dist
-API/.env
-web/node_modules/
+Lambdas/resetSession/node_modules/
+Lambdas/resetSession/dist
+Lambdas/resetSession/.serverless
+reset-session-web/node_modules/
+reset-session-web/build
